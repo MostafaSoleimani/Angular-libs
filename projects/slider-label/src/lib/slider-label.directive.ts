@@ -3,7 +3,7 @@ import { DOCUMENT } from '@angular/common';
 import { Directive, ElementRef, HostListener, AfterViewInit, Inject, Renderer2 } from '@angular/core';
 
 @Directive({
-  selector: '[libSliderLabel]'
+  selector: '[ngxSliderLabel]'
 })
 export class SliderLabelDirective implements AfterViewInit {
   span: any;

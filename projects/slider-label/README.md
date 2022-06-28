@@ -1,24 +1,29 @@
 # SliderLabel
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.0.
+When you have a text that doesn't fit to your label, You can use this directive.
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name --project slider-label` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project slider-label`.
-> Note: Don't forget to add `--project slider-label` or else it will be added to the default project in your `angular.json` file. 
+Install slider-label with npm
 
-## Build
+```bash
+  cd my-project
+  npm i slider-label
+```
 
-Run `ng build slider-label` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Usage/Examples
 
-## Publishing
+```javascript
+import { SliderLabelModule } from "slider-label";
 
-After building your library with `ng build slider-label`, go to the dist folder `cd dist/slider-label` and run `npm publish`.
+@NgModule({
+  imports: [SliderLabelModule],
+})
+export class AppModule {}
+```
 
-## Running unit tests
+Then in your component.html
 
-Run `ng test slider-label` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```html
+<div ngxSliderLabel>your text that doesn't fit in this div</div>
+```
