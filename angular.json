@@ -33,6 +33,37 @@
           }
         }
       }
+    },
+    "ngx-live-search": {
+      "projectType": "library",
+      "root": "projects/ngx-live-search",
+      "sourceRoot": "projects/ngx-live-search/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ngx-live-search/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-live-search/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngx-live-search/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-live-search/src/test.ts",
+            "tsConfig": "projects/ngx-live-search/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-live-search/karma.conf.js"
+          }
+        }
+      }
     }
   },
   "defaultProject": "slider-label"

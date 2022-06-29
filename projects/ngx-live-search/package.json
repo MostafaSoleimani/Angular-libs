@@ -1,6 +1,6 @@
 {
-  "name": "slider-label",
-  "version": "1.0.4",
+  "name": "@mostafasoleimani1987/ngx-live-search",
+  "version": "1.0.0",
   "peerDependencies": {
     "@angular/common": "^13.2.0",
     "@angular/core": "^13.2.0"
@@ -8,7 +8,7 @@
   "dependencies": {
     "tslib": "^2.3.0"
   },
-  "keywords": ["Floating Label", "Ellipsis Label", "Sliding Label", "Slider Label", "Animated Label"],
+  "keywords": ["Angular", "Live Search", "Search"],
   "author": {
     "email": "mostafasoleimani1987@gmail.com",
     "name": "Mostafa Soleimani"

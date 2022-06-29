@@ -17,6 +17,10 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "paths": {
+      "ngx-live-search": [
+        "dist/ngx-live-search/ngx-live-search",
+        "dist/ngx-live-search"
+      ],
       "slider-label": [
         "dist/slider-label/slider-label",
         "dist/slider-label"
