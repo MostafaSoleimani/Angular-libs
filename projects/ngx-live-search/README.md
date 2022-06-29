@@ -2,6 +2,12 @@
 
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.0.
 
+## Demo
+
+https://angular-ivy-kdr5j4.stackblitz.io
+
+https://stackblitz.com/edit/angular-ivy-kdr5j4?file=src/app/app.component.html
+
 ## Installation
 
 Install npm i ngm-live-search with npm
@@ -30,12 +36,15 @@ export class AppModule {}
 Then in your component.html
 
 ```html
-<ngm-live-search (search)="yourSearch()"> </ngm-live-search>
+<ngm-live-search (search)="yourSearch($event)"> </ngm-live-search>
 ```
 
 ```typescript
 export class YourComponent {
-  yourSearch() {
+  /**
+   * @params text: the text to search.
+   */
+  yourSearch(text: string) {
     // Call api or search locally on your data.
     // this.callApi() In case of call api.
     // this.localSearch() In case of local search.
