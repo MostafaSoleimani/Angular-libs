@@ -18,7 +18,7 @@ export interface ISearchParams {
 }
 
 @Component({
-  selector: 'ngx-live-search',
+  selector: 'ngm-live-search',
   template: `
     <div class="nosubmit">
         <input class="nosubmit" type="search" [placeholder]="searchLabel" #searchInput/>

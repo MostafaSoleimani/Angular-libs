@@ -1,6 +1,6 @@
 {
-  "name": "@mostafasoleimani1987/ngx-live-search",
-  "version": "1.0.0",
+  "name": "ngm-live-search",
+  "version": "1.0.1",
   "peerDependencies": {
     "@angular/common": "^13.2.0",
     "@angular/core": "^13.2.0"
