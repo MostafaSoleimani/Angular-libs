@@ -1,4 +1,4 @@
-# NgxLiveSearch
+# NgmLiveSearch
 
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.0.
 
@@ -20,14 +20,14 @@ Install npm i ngm-live-search with npm
 ## Usage/Examples
 
 ```javascript
-import { NgxLiveSearchModule } from "npm i ngm-live-search";
+import { NgmLiveSearchModule } from "npm i ngm-live-search";
 
 @NgModule({
   imports: [
     .
     .
     .
-    NgxLiveSearchModule
+    NgmLiveSearchModule
   ],
 })
 export class AppModule {}
@@ -36,8 +36,11 @@ export class AppModule {}
 Then in your component.html
 
 ```html
-<ngm-live-search (search)="yourSearch($event)"> </ngm-live-search>
+<ngm-live-search (search)="yourSearch($event)" (searchClosed)="clearSearch()">
+</ngm-live-search>
 ```
+
+Then in your component.ts
 
 ```typescript
 export class YourComponent {
@@ -48,6 +51,10 @@ export class YourComponent {
     // Call api or search locally on your data.
     // this.callApi() In case of call api.
     // this.localSearch() In case of local search.
+  }
+
+  clearSearch() {
+    // Stop filtering your data
   }
 
   callApi() {}
@@ -63,3 +70,10 @@ export class YourComponent {
 | Parameter | Type            | Description                          |
 | :-------- | :-------------- | :----------------------------------- |
 | `config`  | `ISearchParams` | debounceTime, minLength, clearOnBlur |
+
+#### Outputs
+
+| Parameter      | Type     | Description                  |
+| :------------- | :------- | :--------------------------- |
+| `search`       | `string` | Returns the string to search |
+| `searchClosed` | `string` | on click on x button         |

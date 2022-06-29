@@ -13,4 +13,4 @@ import { NgxLiveSearchComponent } from './ngx-live-search.component';
     NgxLiveSearchComponent
   ]
 })
-export class NgxLiveSearchModule { }
+export class NgmLiveSearchModule { }
