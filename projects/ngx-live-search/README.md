@@ -4,8 +4,6 @@ This library was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Demo
 
-https://angular-ivy-kdr5j4.stackblitz.io
-
 https://stackblitz.com/edit/angular-ivy-kdr5j4?file=src/app/app.component.html
 
 ## Installation

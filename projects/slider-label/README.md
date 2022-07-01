@@ -6,8 +6,6 @@ When you have a text that doesn't fit to your label, You can use this directive.
 
 ## Demo
 
-https://angular-ivy-dbhlko.stackblitz.io
-
 https://stackblitz.com/edit/angular-ivy-dbhlko?file=src/app/app.component.html
 
 ## Installation

@@ -1,6 +1,6 @@
 {
   "name": "ngm-live-search",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "peerDependencies": {
     "@angular/common": "^13.2.0",
     "@angular/core": "^13.2.0"
@@ -12,5 +12,10 @@
   "author": {
     "email": "mostafasoleimani1987@gmail.com",
     "name": "Mostafa Soleimani"
+  },
+  "homepage": "https://github.com/MostafaSoleimani/Angular-libs/blob/main/projects/ngx-live-search/README.md",
+  "repository": {
+    "url": "https://github.com/MostafaSoleimani/Angular-libs/tree/main/projects",
+    "directory": "ngx-live-search"
   }
 }
