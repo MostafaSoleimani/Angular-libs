@@ -1,4 +1,4 @@
-export interface INgmDataSource<T> {
+export interface INgmDataSource<T = {}> {
   data: T[];
   getChildrenFn: (obj: T) => T[];
 }

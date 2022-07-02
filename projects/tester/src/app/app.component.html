@@ -1,7 +1,14 @@
-<ngm-tree-grid
+<!-- <ngm-tree-grid
   [dataSource]="dataSource"
   [config]="treeGridConfig"
   (expand)="onExpand($event)"
   (collapse)="onCollapse($event)"
 >
-</ngm-tree-grid>
+</ngm-tree-grid> -->
+
+
+<div *ngmTreeGrid="let data of dataSource; let level = level">
+  <span>{{data.title.caption}}</span>
+  <span>{{data.id}}</span>
+  <span>level: {{level}}</span>
+</div>
