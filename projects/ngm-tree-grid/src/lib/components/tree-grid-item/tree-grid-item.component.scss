@@ -1,0 +1,35 @@
+.child {
+  margin-left: 20px;
+}
+
+.ngm-tree-grid-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+
+  .ngm-tree-grid-main {
+    width: 30%;
+    padding: 2px;
+    border: 1px solid #333;
+  }
+
+  .ngm-tree-grid-items {
+    width: 70%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+
+    .ngm-tree-grid-cell {
+      min-width: 100px;
+      padding: 2px;
+      border: 1px solid #333;
+    }
+  }
+}
+
+.ngm-tree-grid-main-icon {
+  cursor: pointer;
+}
