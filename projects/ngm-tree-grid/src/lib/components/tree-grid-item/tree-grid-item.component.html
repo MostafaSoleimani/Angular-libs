@@ -1,0 +1,61 @@
+<div>
+  <ng-content></ng-content>
+  <div *ngFor="let item of data">
+    <div class="ngm-tree-grid-row">
+      <div class="ngm-tree-grid-main">
+        <span [ngStyle]="{ 'margin-left': level * 20 + 'px' }">
+          <span
+            *ngIf="
+              getChildrenFn(item) &&
+              getChildrenFn(item).length > 0 &&
+              item.isOpen
+            "
+            (click)="closeItem(item)"
+            class="ngm-tree-grid-main-icon"
+          >
+            ^
+          </span>
+          <span
+            *ngIf="
+              getChildrenFn(item) &&
+              getChildrenFn(item).length > 0 &&
+              !item.isOpen
+            "
+            (click)="openItem(item)"
+            class="ngm-tree-grid-main-icon"
+          >
+            >
+          </span>
+          <span *ngIf="!getChildrenFn(item) || getChildrenFn(item).length == 0">
+            -
+          </span>
+
+          {{
+            config.columns[0].getText
+              ? config.columns[0].getText(item)
+              : item[config.columns[0].key]
+          }}
+        </span>
+      </div>
+
+      <div class="ngm-tree-grid-items">
+        <div
+          class="ngm-tree-grid-cell"
+          *ngFor="let column of config.columns | slice: 1:config.columns.length"
+        >
+          {{ column.getText ? column.getText(item) : item[column["key"]] }}
+        </div>
+      </div>
+    </div>
+    <div *ngIf="getChildrenFn(item) && item.isOpen">
+      <ngm-tree-grid-item
+        [data]="getChildrenFn(item)"
+        [config]="config"
+        [level]="level + 1"
+        [getChildrenFn]="getChildrenFn"
+        (expand)="onExpand($event)"
+        (collapse)="onCollapse($event)"
+      ></ngm-tree-grid-item>
+    </div>
+  </div>
+</div>

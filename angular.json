@@ -64,6 +64,145 @@
           }
         }
       }
+    },
+    "tester": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/tester",
+      "sourceRoot": "projects/tester/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/tester",
+            "index": "projects/tester/src/index.html",
+            "main": "projects/tester/src/main.ts",
+            "polyfills": "projects/tester/src/polyfills.ts",
+            "tsConfig": "projects/tester/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/tester/src/favicon.ico",
+              "projects/tester/src/assets"
+            ],
+            "styles": [
+              "projects/tester/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/tester/src/environments/environment.ts",
+                  "with": "projects/tester/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "host": "0.0.0.0",
+            "port": 4210,
+            "open": true
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "tester:build:production"
+            },
+            "development": {
+              "browserTarget": "tester:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "tester:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/tester/src/test.ts",
+            "polyfills": "projects/tester/src/polyfills.ts",
+            "tsConfig": "projects/tester/tsconfig.spec.json",
+            "karmaConfig": "projects/tester/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/tester/src/favicon.ico",
+              "projects/tester/src/assets"
+            ],
+            "styles": [
+              "projects/tester/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "ngm-tree-grid": {
+      "projectType": "library",
+      "root": "projects/ngm-tree-grid",
+      "sourceRoot": "projects/ngm-tree-grid/src",
+      "prefix": "ngm",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ngm-tree-grid/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngm-tree-grid/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngm-tree-grid/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngm-tree-grid/src/test.ts",
+            "tsConfig": "projects/ngm-tree-grid/tsconfig.spec.json",
+            "karmaConfig": "projects/ngm-tree-grid/karma.conf.js"
+          }
+        }
+      }
     }
   },
   "defaultProject": "slider-label"
