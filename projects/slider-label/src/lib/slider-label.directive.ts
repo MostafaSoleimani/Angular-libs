@@ -8,8 +8,8 @@ import { Directive, ElementRef, HostListener, AfterViewInit, Inject, Renderer2, 
 export class SliderLabelDirective implements AfterViewInit {
   /** direction 'rtl' | 'ltr' */
   @Input() dir: 'rtl' | 'ltr' = 'ltr';
-  /** Animation Duration in ms */
-  @Input() dur: number = 1000;
+  /** Animation Duration. Pixel per millisecond */
+  @Input() dur: number = 0.06;
   /** Animation Duration for back to normal in ms */
   @Input() comeBackTime: number = 40;
   @Input() className: string = 'ngxSliderLabel';
@@ -66,14 +66,17 @@ export class SliderLabelDirective implements AfterViewInit {
   }
 
   makeAnimation(element: any) {
+    const diff = this.childBound.width - this.parentBound.width + 10
     // first define a reusable animation
     const myAnimation = this._builder.build([
       style({ [this.margin]: 0 }),
-      animate(this.dur, style({ [this.margin]: -(this.childBound.width - this.parentBound.width + 10) + 'px' }))
+      animate( diff / this.dur, style({ [this.margin]: -diff + 'px' }))
     ]);
 
     // use the returned factory object to create a player
     const player = myAnimation.create(element);
+
+    console.log('animate in ', diff / this.dur, (diff ) + 'px')
 
     player.play();
   }

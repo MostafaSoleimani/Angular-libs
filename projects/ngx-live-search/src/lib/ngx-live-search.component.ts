@@ -96,7 +96,7 @@ export interface ISearchParams {
 export class NgxLiveSearchComponent implements AfterViewInit, OnDestroy {
   @Input() config: ISearchParams = {
     debounceTime: 700,
-    minLength: 2,
+    minLength: 0,
   };
   @Output() search = new EventEmitter<string>();
   @Output() searchClosed = new EventEmitter<string>();

@@ -1,5 +1,5 @@
-import { SliderLabelModule } from './../../../slider-label/src/lib/slider-label.module';
-import { NgmTreeGridModule } from './../../../ngm-tree-grid/src/lib/ngm-tree-grid.module';
+import { SliderLabelModule } from 'slider-label';
+import { NgmTreeGridModule } from 'ngm-tree-grid';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';

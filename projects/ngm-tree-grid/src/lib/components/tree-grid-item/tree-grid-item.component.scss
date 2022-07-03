@@ -25,6 +25,11 @@
       align-items: center;
       flex-direction: row;
       .ngm-tree-grid-main {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: row;
+        overflow: hidden;
         .ngm-tree-grid-main-icon {
           cursor: pointer;
           width: 13px;

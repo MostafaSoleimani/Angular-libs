@@ -93,7 +93,7 @@
               "projects/tester/src/assets",
               {
                 "glob": "**/*",
-                "input": "projects/ngm-tree-grid/assets",
+                "input": "projects/ngm-tree-grid/src/assets",
                 "output": "/assets/"
               }
             ],

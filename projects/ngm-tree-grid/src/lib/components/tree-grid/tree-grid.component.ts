@@ -57,15 +57,15 @@ export class TreeGridComponent<T> {
 
   onSearch(text: string) {
     console.log('searched', text)
-    if (typeof text === 'string') {
+    if (typeof text === 'string' && text != '') {
       this.filterText = text
     } else {
       this.filterText = ''
-      this.refreshGrid();
     }
     if (!this.config.searchFn) {
       throw new Error('You should Provide searchFn')
     }
+    this.refreshGrid();
     this.filterTree();
   }
 

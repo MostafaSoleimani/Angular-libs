@@ -4,12 +4,13 @@
       <div class="ngm-tree-grid-items">
         <div
           class="ngm-tree-grid-cell"
-          *ngFor="let column of this.cellInputs.toArray(); let first = first"
+          *ngFor="let column of cellInputs.toArray(); let first = first"
+          [ngStyle]="{width: first ? '30%' : 70 / (cellInputs.toArray().length - 1) + '%'}"
         >
-          <div class="ngm-tree-grid-main" *ngIf="first">
-            <span [ngStyle]="{ 'margin-left': level * 20 + 'px' }">
+          <div class="ngm-tree-grid-main" *ngIf="first" [ngStyle]="{ 'margin-left': level * 20 + 'px' }">
+            <!-- <span [ngStyle]="{ 'margin-left': level * 20 + 'px' }"> -->
               <img
-                src="../../../assets/arrow_up.png"
+                src="assets/arrow_up.png"
                 alt=""
                 *ngIf="
                   getChildrenFn(item) &&
@@ -21,7 +22,7 @@
               />
 
               <img
-                src="../../../assets/download.png"
+                src="assets/download.png"
                 alt=""
                 *ngIf="
                   getChildrenFn(item) &&
@@ -31,21 +32,21 @@
                 (click)="openItem(item)"
                 class="ngm-tree-grid-main-icon"
               />
-              <span
+
+              <img
+                src="assets/dash.png"
+                alt=""
                 *ngIf="!getChildrenFn(item) || getChildrenFn(item).length == 0"
-              >
-                -
-              </span>
-              <ng-template ngmCellHost *ngIf="!first"></ng-template>
-            </span>
+                class="ngm-tree-grid-main-icon"
+              />
+              <ng-template ngmCellHost ></ng-template>
+            <!-- </span> -->
           </div>
-          <ng-template ngmCellHost></ng-template>
-          <!-- {{ column.getText ? column.getText(item) : item[column["key"]] }} -->
+          <ng-template ngmCellHost *ngIf="!first"></ng-template>
         </div>
       </div>
     </div>
     <div *ngIf="getChildrenFn(item) && item.isOpen">
-      <!-- {{ item.isOpen }} {{ getChildrenFn(item).length }} {{ cells.length }} -->
       <ngm-tree-grid-item
         [data]="getChildrenFn(item)"
         [config]="config"

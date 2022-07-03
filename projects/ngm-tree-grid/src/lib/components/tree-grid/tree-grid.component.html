@@ -5,7 +5,7 @@
       <ngm-live-search (search)="onSearch($event)"> </ngm-live-search>
     </div>
     <div class="tree-grid-titles">
-      <div *ngFor="let head of config.columns">
+      <div *ngFor="let head of config.columns; let first=first" [ngStyle]="{width: first ? '30%' : 70 / (config.columns.length - 1) + '%'}">
         {{ head.header }}
       </div>
     </div>
@@ -22,5 +22,6 @@
     >
     </ngm-tree-grid-item>
   </main>
-  <footer></footer>
+  <footer>
+  </footer>
 </div>
