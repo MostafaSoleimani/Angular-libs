@@ -90,7 +90,12 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/tester/src/favicon.ico",
-              "projects/tester/src/assets"
+              "projects/tester/src/assets",
+              {
+                "glob": "**/*",
+                "input": "projects/ngm-tree-grid/assets",
+                "output": "/assets/"
+              }
             ],
             "styles": [
               "projects/tester/src/styles.scss"
@@ -133,9 +138,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "host": "0.0.0.0",
-            "port": 4210,
-            "open": true
+            "port": 4210
           },
           "configurations": {
             "production": {

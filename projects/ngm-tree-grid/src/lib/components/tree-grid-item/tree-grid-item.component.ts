@@ -1,5 +1,5 @@
-import { Component, ContentChild, Input, OnInit, AfterViewInit, EventEmitter, Output, AfterContentInit, ElementRef } from '@angular/core';
-import { TreeGridRowDirective } from '../../directive/tree-grid-row.directive';
+import { AfterContentInit, Component, ContentChildren, EventEmitter, Input, Output, QueryList, TemplateRef, ViewChildren } from '@angular/core';
+import { CellHostDirective } from '../../directive/cell-host.directive';
 import { INgmExpansion, INgmTreeGridConfig } from '../../model';
 
 @Component({
@@ -7,7 +7,7 @@ import { INgmExpansion, INgmTreeGridConfig } from '../../model';
   templateUrl: './tree-grid-item.component.html',
   styleUrls: ['./tree-grid-item.component.scss']
 })
-export class TreeGridItemComponent {
+export class TreeGridItemComponent implements AfterContentInit {
   @Input() level = 1;
   @Input() data: any[] = [];
   @Input()
@@ -30,6 +30,13 @@ export class TreeGridItemComponent {
 
   @Output()
   collapse = new EventEmitter<INgmExpansion>();
+
+  @Input() cellInputs: any;
+
+
+  @ViewChildren(CellHostDirective) cellPanes!: QueryList<CellHostDirective>;
+
+
   constructor() { }
 
   openItem(item: any) {
@@ -55,8 +62,16 @@ export class TreeGridItemComponent {
     this.collapse.emit(e)
   }
 
-  ngOnInit() {
-    console.log('config:   ', this.config, this.getChildrenFn)
+  ngAfterContentInit(): void {
+    setTimeout(() => {
+      this.cellPanes.forEach((x, i) => {
+        x.viewContainerRef.clear();
+        x.viewContainerRef.createEmbeddedView(this.cellInputs.get(i % this.cellInputs.length)!, {
+          $implicit: this.data[Math.floor(i / this.cellInputs.length)]
+        })
+      });
+    }, 10);
   }
+
 
 }

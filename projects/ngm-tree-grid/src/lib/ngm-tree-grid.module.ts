@@ -4,6 +4,8 @@ import { TreeGridItemComponent } from './components/tree-grid-item/tree-grid-ite
 import { TreeGridRowDirective } from './directive/tree-grid-row.directive';
 import { TreeGridCellDirective } from './directive/tree-grid-cell.directive';
 import { CommonModule } from '@angular/common';
+import { CellHostDirective } from './directive/cell-host.directive';
+import { NgmLiveSearchModule } from 'ngx-live-search';
 
 
 
@@ -12,14 +14,16 @@ import { CommonModule } from '@angular/common';
     TreeGridComponent,
     TreeGridItemComponent,
     TreeGridRowDirective,
-    TreeGridCellDirective
+    TreeGridCellDirective,
+    CellHostDirective
   ],
   imports: [
     CommonModule,
-
+    NgmLiveSearchModule
   ],
   exports: [
     TreeGridComponent,
+    TreeGridItemComponent,
     TreeGridRowDirective,
     TreeGridCellDirective
   ]

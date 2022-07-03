@@ -5,10 +5,35 @@
   (collapse)="onCollapse($event)"
 >
 </ngm-tree-grid> -->
+<div class="tree-grid">
+  <ngm-tree-grid
+    [dataSource]="dataSource"
+    [config]="treeGridConfig"
+    (expand)="onExpand($event)"
+    (collapse)="onCollapse($event)"
+  >
+    <ng-template #treeGridCell let-item>
+      <div ngxSliderLabel>
+        {{ item.title.caption }}
+      </div>
+    </ng-template>
 
+    <ng-template #treeGridCell let-item> {{ item.id }} </ng-template>
 
-<div *ngmTreeGrid="let data of dataSource; let level = level">
-  <span>{{data.title.caption}}</span>
-  <span>{{data.id}}</span>
-  <span>level: {{level}}</span>
+    <!-- <ng-template #treeGridCell let-item>
+      <input [(ngModel)]="item.title.caption" />
+    </ng-template> -->
+
+    <!-- <ng-template #treeGridCell let-item> {{ item }} 3 </ng-template> -->
+  </ngm-tree-grid>
 </div>
+
+<!-- <div
+  ngmTreeGridCell
+  *ngmTreeGrid="let data of dataSource; let level = level"
+  [offset]="level"
+>
+  <span>{{ data.title.caption }}</span>
+  <span>{{ data.id }}</span>
+  <span>level: {{ level }}</span>
+</div> -->

@@ -1,6 +1,6 @@
 import { TreeGridRowDirective } from './../../directive/tree-grid-row.directive';
 import { INgmTreeGridConfig } from './../../model/tree-grid-config';
-import { Component, Input, OnInit, Output, EventEmitter, ContentChild } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, ContentChild, ContentChildren, QueryList, TemplateRef } from '@angular/core';
 import { INgmDataSource } from './../../model/datasource-model';
 import { INgmExpansion } from '../../model';
 
@@ -31,6 +31,14 @@ export class TreeGridComponent<T> {
     }
   }
 
+  @ContentChildren('treeGridCell') cellContents!: QueryList<TemplateRef<any>>;
+
+  filterText = '';
+  filteredData: T[] = [];
+
+  showGrid = true;
+
+  constructor() { }
 
   onExpand(e: INgmExpansion) {
     this.expand.emit(e)
@@ -40,7 +48,73 @@ export class TreeGridComponent<T> {
     this.collapse.emit(e)
   }
 
-  constructor() { }
+  refreshGrid() {
+    this.showGrid = false;
+    setTimeout(() => {
+      this.showGrid = true
+    }, 0);
+  }
+
+  onSearch(text: string) {
+    console.log('searched', text)
+    if (typeof text === 'string') {
+      this.filterText = text
+    } else {
+      this.filterText = ''
+      this.refreshGrid();
+    }
+    if (!this.config.searchFn) {
+      throw new Error('You should Provide searchFn')
+    }
+    this.filterTree();
+  }
+
+  ///////////////////////////////////////////////////////////////////////////
+  /////////////////////********************************/////////////////////
+  ///////////**********     Start Filtering       **********///////////
+
+  filterTree() {
+    if (this.dataSource.data && this.filterText) {
+      this.filteredData = [...this.dataSource.data]
+        .filter((item) =>
+          this.hasIncludedSearchTextInChildren(item, this.filterText)
+        )
+        .map((item) => this.filtering(item, this.filterText));
+    } else {
+      this.filteredData = [...this.dataSource.data];
+    }
+  }
+
+  filtering(node: T, text: string): T {
+    return {
+      ...node,
+      isOpen: true,
+      show: true,
+      nodes: this.dataSource.getChildrenFn(node)
+        ?.filter((item) => this.hasIncludedSearchTextInChildren(item, text))
+        .map((item) => this.filtering(item, text)),
+    };
+  }
+
+  hasIncludedSearchTextInChildren(node: any, searchText: string): boolean {
+    // console.log(node, searchText);
+    // if (node.name.toLowerCase().includes(searchText.toLowerCase())) {
+    // }
+    if (this.config.searchFn!(node, searchText)) {
+      return true;
+    }
+    if (this.dataSource.getChildrenFn(node)) {
+      return this.dataSource.getChildrenFn(node).some((child: any) =>
+        this.hasIncludedSearchTextInChildren(child, searchText)
+      );
+    }
+    return false;
+  }
+
+  /////////////**********     End Filtering      **********////////////
+  /////////////////////********************************/////////////////////
+  //////////////////////////////////////////////////////////////////////////
+
 
 
 }

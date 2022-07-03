@@ -1,19 +1,25 @@
 <div class="ngm-tree-grid">
   <header>
-    <div *ngFor="let head of config.columns">
-      {{ head.header }}
+    <div class="tree-grid-search">
+      search:
+      <ngm-live-search (search)="onSearch($event)"> </ngm-live-search>
+    </div>
+    <div class="tree-grid-titles">
+      <div *ngFor="let head of config.columns">
+        {{ head.header }}
+      </div>
     </div>
   </header>
   <main>
     <ngm-tree-grid-item
-      [data]="dataSource.data"
+      *ngIf="showGrid"
+      [data]="filterText === '' ? dataSource.data : filteredData"
       [config]="config"
       (expand)="onExpand($event)"
       (collapse)="onCollapse($event)"
       [getChildrenFn]="dataSource.getChildrenFn"
+      [cellInputs]="cellContents"
     >
-      <ng-content select="[ngmTreeGridRow]" ngProjectAs="[ngmTreeGridRow]">
-      </ng-content>
     </ngm-tree-grid-item>
   </main>
   <footer></footer>

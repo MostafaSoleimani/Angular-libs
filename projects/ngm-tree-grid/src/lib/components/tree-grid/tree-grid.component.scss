@@ -1,4 +1,9 @@
-header {
+.ngm-tree-grid {
+  padding: 5px;
+  border: 1px solid #666;
+}
+
+.tree-grid-titles {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -18,4 +23,8 @@ header {
       border: 1px solid #333;
     }
   }
+}
+
+.tree-grid-search {
+  max-width: 200px;
 }

@@ -9,14 +9,8 @@
   align-items: center;
   flex-direction: row;
 
-  .ngm-tree-grid-main {
-    width: 30%;
-    padding: 2px;
-    border: 1px solid #333;
-  }
-
   .ngm-tree-grid-items {
-    width: 70%;
+    width: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -26,10 +20,21 @@
       min-width: 100px;
       padding: 2px;
       border: 1px solid #333;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: row;
+      .ngm-tree-grid-main {
+        .ngm-tree-grid-main-icon {
+          cursor: pointer;
+          width: 13px;
+        }
+      }
+      &:first-child {
+        padding: 2px 1px;
+        width: 30%;
+        border: 1px solid #333;
+      }
     }
   }
-}
-
-.ngm-tree-grid-main-icon {
-  cursor: pointer;
 }
