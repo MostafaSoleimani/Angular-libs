@@ -1,4 +1,3 @@
-import { TreeGridRowDirective } from './../../directive/tree-grid-row.directive';
 import { INgmTreeGridConfig } from './../../model/tree-grid-config';
 import { Component, Input, OnInit, Output, EventEmitter, ContentChild, ContentChildren, QueryList, TemplateRef } from '@angular/core';
 import { INgmDataSource } from './../../model/datasource-model';

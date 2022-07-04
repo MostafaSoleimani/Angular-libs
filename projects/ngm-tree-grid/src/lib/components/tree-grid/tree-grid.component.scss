@@ -1,6 +1,6 @@
 .ngm-tree-grid {
-  padding: 5px;
-  border: 1px solid #666;
+  // padding: 5px;
+  border: 1px solid #0000001f;
 }
 
 .tree-grid-titles {
@@ -12,15 +12,15 @@
 
   div {
     padding: 2px;
-    border: 1px solid #333;
+    border: 1px solid #0000001f;
     min-width: 100px;
+    height: 40px;
   }
 
   & > div {
     &:first-child {
       padding: 2px 1px;
       width: 30%;
-      border: 1px solid #333;
     }
   }
 }

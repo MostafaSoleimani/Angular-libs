@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ContentChildren, EventEmitter, Input, Output, QueryList, TemplateRef, ViewChildren } from '@angular/core';
+import { AfterContentInit, Component, EventEmitter, Input, Output, QueryList, ViewChildren } from '@angular/core';
 import { CellHostDirective } from '../../directive/cell-host.directive';
 import { INgmExpansion, INgmTreeGridConfig } from '../../model';
 

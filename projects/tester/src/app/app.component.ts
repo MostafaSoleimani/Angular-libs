@@ -3374,6 +3374,18 @@ export class AppComponent implements OnInit {
       {
         header: 'Id: ',
         key: 'id'
+      },
+      {
+        header: 'Id: ',
+        key: 'id'
+      },
+      {
+        header: 'Id: ',
+        key: 'id'
+      },
+      {
+        header: 'Id: ',
+        key: 'id'
       }
     ],
     searchFn: (item, text) => item.title.caption.includes(text)

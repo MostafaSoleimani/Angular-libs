@@ -1,16 +1,21 @@
 <div class="ngm-tree-grid">
   <header>
-    <div class="tree-grid-search">
+    <div class="tree-grid-search" *ngIf="config.hasSearch">
       search:
       <ngm-live-search (search)="onSearch($event)"> </ngm-live-search>
     </div>
+  </header>
+  <main>
     <div class="tree-grid-titles">
-      <div *ngFor="let head of config.columns; let first=first" [ngStyle]="{width: first ? '30%' : 70 / (config.columns.length - 1) + '%'}">
+      <div
+        *ngFor="let head of config.columns; let first = first"
+        [ngStyle]="{
+          width: first ? '30%' : 70 / (config.columns.length - 1) + '%'
+        }"
+      >
         {{ head.header }}
       </div>
     </div>
-  </header>
-  <main>
     <ngm-tree-grid-item
       *ngIf="showGrid"
       [data]="filterText === '' ? dataSource.data : filteredData"
@@ -22,6 +27,5 @@
     >
     </ngm-tree-grid-item>
   </main>
-  <footer>
-  </footer>
+  <footer></footer>
 </div>
