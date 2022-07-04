@@ -1,19 +1,19 @@
 <div class="ngm-tree-grid">
   <header>
-    <!-- <div class="tree-grid-search" *ngIf="config.hasSearch">
+    <div class="tree-grid-search" *ngIf="config.hasSearch">
       search:
       <ngm-live-search (search)="onSearch($event)"> </ngm-live-search>
-    </div> -->
+    </div>
   </header>
   <main>
     <div class="tree-grid-titles">
       <div
         *ngFor="let head of config.columns; let first = first"
         [ngStyle]="{
-          width: first ? '30%' : 70 / (config.columns.length - 1) + '%'
+          width: head.width ? (head.width + '%') : (100 / (config.columns.length) + '%')
         }"
       >
-        {{ head }}
+        {{ head.header }}
       </div>
     </div>
     <ngm-tree-grid-item

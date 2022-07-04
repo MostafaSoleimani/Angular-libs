@@ -4,9 +4,9 @@
       <div class="ngm-tree-grid-items">
         <div
           class="ngm-tree-grid-cell"
-          *ngFor="let column of cellInputs.toArray(); let first = first"
+          *ngFor="let column of cellInputs.toArray(); let first = first; let index = index"
           [ngStyle]="{
-            width: first ? '30%' : 70 / (cellInputs.toArray().length - 1) + '%'
+            width: config.columns[index].width ? config.columns[index].width + '%' : 100 / (cellInputs.toArray().length) + '%'
           }"
         >
           <div

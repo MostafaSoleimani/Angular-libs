@@ -5,5 +5,8 @@
   "lib": {
     "entryFile": "src/public-api.ts",
     "cssUrl": "inline"
-  }
+  },
+  "allowedNonPeerDependencies": [
+    "ngm-live-search"
+  ]
 }

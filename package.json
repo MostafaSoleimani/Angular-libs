@@ -18,6 +18,7 @@
     "@angular/platform-browser": "~13.2.0",
     "@angular/platform-browser-dynamic": "~13.2.0",
     "@angular/router": "~13.2.0",
+    "ngm-live-search": "^1.0.5",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -46,5 +47,10 @@
     "url": "https://github.com/MostafaSoleimani/Angular-libs/blob/main/projects",
     "directory": "Angular-libs"
   },
-  "keywords": ["Angular libs", "tree grid", "angular tree grid", "tree table"]
+  "keywords": [
+    "Angular libs",
+    "tree grid",
+    "angular tree grid",
+    "tree table"
+  ]
 }

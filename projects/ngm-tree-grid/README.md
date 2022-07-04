@@ -1,6 +1,6 @@
 # NgmTreeGrid
 
-A tree grid that suppports editable fields like Inputs and Checkboxes.
+A tree grid that supports editable fields like Inputs and Checkboxes.
 
 ## Demo
 
@@ -54,8 +54,17 @@ export class YourComponent {
   dataSource = new NgmDataSource();
   getChildrenFn = (obj: any) => obj.nodes ?? [];
   treeGridConfig: INgmTreeGridConfig = {
-    columns: ["Title: ", "Id: "],
-    searchFn: (item, text) => item.title.caption.includes(text),
+    columns: [
+      {
+        header: 'Title: ',
+        width: 50,
+      },
+      {
+        header: 'Id: ',
+        width: 50,
+      },
+    ],
+    searchFn: (item, text: string) =>  item.name.toLocaleLowerCase().includes(text.toLocaleLowerCase()),
   };
 
   data = [
@@ -88,11 +97,11 @@ export class YourComponent {
 
 ## API Reference
 
-#### Inputs
+#### Inputs and Outputs
 
-| Parameter    | Type                 | Description                     |
-| :----------- | :------------------- | :------------------------------ |
-| `config`     | `INgmTreeGridConfig` | configuration of tree-grid      |
-| `dataSourse` | `INgmDataSource`     | data and a func to get children |
-| `expand`     | `Output`             | emits when user expand a node   |
-| `collapse`   | `Output`             | emits when user collapse a node |
+| Parameter      | Type                 | Description                                       |
+| :------------- | :------------------- | :------------------------------------------------ |
+| `[config]`     | `INgmTreeGridConfig` | configuration of tree-grid header and search      |
+| `[dataSource]` | `INgmDataSource`     | data and a func to get children                   |
+| `(expand)`     | `Output`             | emits when user expand a node returns the item    |
+| `(collapse)`   | `Output`             | emits when user collapse a node returns the item  |
