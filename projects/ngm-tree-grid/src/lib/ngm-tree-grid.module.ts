@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { NgmLiveSearchModule } from 'ngx-live-search';
+// import { NgmLiveSearchModule } from 'ngx-live-search';
 import { TreeGridItemComponent } from './components/tree-grid-item/tree-grid-item.component';
 import { TreeGridComponent } from './components/tree-grid/tree-grid.component';
 import { CellHostDirective } from './directive/cell-host.directive';
@@ -15,7 +15,7 @@ import { CellHostDirective } from './directive/cell-host.directive';
   ],
   imports: [
     CommonModule,
-    NgmLiveSearchModule
+    // NgmLiveSearchModule
   ],
   exports: [
     TreeGridComponent,

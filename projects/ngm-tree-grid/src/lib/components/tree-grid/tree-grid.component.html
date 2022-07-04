@@ -1,9 +1,9 @@
 <div class="ngm-tree-grid">
   <header>
-    <div class="tree-grid-search" *ngIf="config.hasSearch">
+    <!-- <div class="tree-grid-search" *ngIf="config.hasSearch">
       search:
       <ngm-live-search (search)="onSearch($event)"> </ngm-live-search>
-    </div>
+    </div> -->
   </header>
   <main>
     <div class="tree-grid-titles">
@@ -13,7 +13,7 @@
           width: first ? '30%' : 70 / (config.columns.length - 1) + '%'
         }"
       >
-        {{ head.header }}
+        {{ head }}
       </div>
     </div>
     <ngm-tree-grid-item

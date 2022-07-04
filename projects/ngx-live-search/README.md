@@ -18,7 +18,7 @@ Install npm i ngm-live-search with npm
 ## Usage/Examples
 
 ```javascript
-import { NgmLiveSearchModule } from "npm i ngm-live-search";
+import { NgmLiveSearchModule } from "ngm-live-search";
 
 @NgModule({
   imports: [

@@ -3365,29 +3365,7 @@ export class AppComponent implements OnInit {
   dataSource = new NgmDataSource();
   getChildrenFn = (obj: any) => obj.nodes ?? []
   treeGridConfig: INgmTreeGridConfig = {
-    columns: [
-      {
-        header: 'Title: ',
-        key: 'title',
-        getText: (item) => item.title.caption
-      },
-      {
-        header: 'Id: ',
-        key: 'id'
-      },
-      {
-        header: 'Id: ',
-        key: 'id'
-      },
-      {
-        header: 'Id: ',
-        key: 'id'
-      },
-      {
-        header: 'Id: ',
-        key: 'id'
-      }
-    ],
+    columns: ['Title: ', 'Id: '],
     searchFn: (item, text) => item.title.caption.includes(text)
   }
 

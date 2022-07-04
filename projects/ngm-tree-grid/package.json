@@ -1,6 +1,6 @@
 {
   "name": "ngm-tree-grid",
-  "version": "0.0.1",
+  "version": "1.0.5",
   "peerDependencies": {
     "@angular/common": "^13.2.0",
     "@angular/core": "^13.2.0"
@@ -10,5 +10,15 @@
   },
   "exports": {
     "default": "./src/assets"
+  },
+  "keywords": ["Tree Grid", "Tree Table", "Grid", "Tree"],
+  "author": {
+    "email": "mostafasoleimani1987@gmail.com",
+    "name": "Mostafa Soleimani"
+  },
+  "homepage": "https://github.com/MostafaSoleimani/Angular-libs/blob/main/projects/ngm-tree-grid/README.md",
+  "repository": {
+    "url": "https://github.com/MostafaSoleimani/Angular-libs/blob/main/projects/ngm-tree-grid",
+    "directory": "ngm-tree-grid"
   }
 }

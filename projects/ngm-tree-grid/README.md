@@ -1,24 +1,98 @@
 # NgmTreeGrid
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.0.
+A tree grid that suppports editable fields like Inputs and Checkboxes.
 
-## Code scaffolding
+## Demo
 
-Run `ng generate component component-name --project ngm-tree-grid` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngm-tree-grid`.
-> Note: Don't forget to add `--project ngm-tree-grid` or else it will be added to the default project in your `angular.json` file. 
+You can find [Demo](https://stackblitz.com/edit/angular-ivy-z3d4sk?file=src%2Fapp%2Fapp.component.ts) here.
 
-## Build
+## Installation
 
-Run `ng build ngm-tree-grid` to build the project. The build artifacts will be stored in the `dist/` directory.
+Install ngm-tree-grid with npm
 
-## Publishing
+```bash
+  cd my-project
+  npm i ngm-tree-grid
+```
 
-After building your library with `ng build ngm-tree-grid`, go to the dist folder `cd dist/ngm-tree-grid` and run `npm publish`.
+## Usage/Examples
 
-## Running unit tests
+```javascript
+import { NgmTreeGridModule } from "ngm-tree-grid";
 
-Run `ng test ngm-tree-grid` to execute the unit tests via [Karma](https://karma-runner.github.io).
+@NgModule({
+  imports: [NgmTreeGridModule],
+})
+export class AppModule {}
+```
 
-## Further help
+Then in your component.html
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```html
+<div class="tree-grid">
+  <ngm-tree-grid
+    [dataSource]="dataSource"
+    [config]="treeGridConfig"
+    (expand)="onExpand($event)"
+    (collapse)="onCollapse($event)"
+  >
+    <ng-template #treeGridCell let-item>
+      <div>{{ item.title.caption }}</div>
+    </ng-template>
+
+    <ng-template #treeGridCell let-item>
+      <input type="checkbox" />
+    </ng-template>
+  </ngm-tree-grid>
+</div>
+```
+
+Then in your component put
+
+```typescript
+export class YourComponent {
+  dataSource = new NgmDataSource();
+  getChildrenFn = (obj: any) => obj.nodes ?? [];
+  treeGridConfig: INgmTreeGridConfig = {
+    columns: ["Title: ", "Id: "],
+    searchFn: (item, text) => item.title.caption.includes(text),
+  };
+
+  data = [
+    {
+      id: 1,
+      name: "Mostafa",
+      nodes: [
+        {
+          id: 2,
+          name: "Soleimani",
+        },
+      ],
+    },
+  ];
+
+  ngOnInit() {
+    this.dataSource.data = this.data;
+    this.dataSource.getChildrenFn = (obj: any) => obj.nodes ?? [];
+  }
+
+  onExpand(e: INgmExpansion) {
+    console.log("expand:   ", e);
+  }
+
+  onCollapse(e: INgmExpansion) {
+    console.log("collapse:   ", e);
+  }
+}
+```
+
+## API Reference
+
+#### Inputs
+
+| Parameter    | Type                 | Description                     |
+| :----------- | :------------------- | :------------------------------ |
+| `config`     | `INgmTreeGridConfig` | configuration of tree-grid      |
+| `dataSourse` | `INgmDataSource`     | data and a func to get children |
+| `expand`     | `Output`             | emits when user expand a node   |
+| `collapse`   | `Output`             | emits when user collapse a node |
