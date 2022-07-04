@@ -34,6 +34,19 @@
         .ngm-tree-grid-main-icon {
           cursor: pointer;
           width: 13px;
+          height: 13px;
+        }
+        .arrow_right {
+          background: url("../../../../assets/download.png");
+          background-size: cover;
+        }
+        .arrow_up {
+          background: url("../../../../assets/arrow_up.png");
+          background-size: cover;
+        }
+        .dash {
+          background: url("../../../../assets/dash.png");
+          background-size: cover;
         }
       }
       &:first-child {

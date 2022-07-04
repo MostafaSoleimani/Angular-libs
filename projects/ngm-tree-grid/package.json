@@ -1,6 +1,6 @@
 {
   "name": "ngm-tree-grid",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "peerDependencies": {
     "@angular/common": "^13.2.0",
     "@angular/core": "^13.2.0"
@@ -9,7 +9,7 @@
     "tslib": "^2.3.0"
   },
   "exports": {
-    "default": "./src/assets"
+    "assets": "./assets"
   },
   "keywords": ["Tree Grid", "Tree Table", "Grid", "Tree"],
   "author": {

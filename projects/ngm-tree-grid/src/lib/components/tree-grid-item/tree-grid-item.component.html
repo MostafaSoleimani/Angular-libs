@@ -14,37 +14,28 @@
             *ngIf="first"
             [ngStyle]="{ 'margin-left': level * 20 + 'px' }"
           >
-            <!-- <span [ngStyle]="{ 'margin-left': level * 20 + 'px' }"> -->
-            <img
-              src="../../../../assets/arrow_up.png"
-              alt="^"
+            <div
+              class="ngm-tree-grid-main-icon arrow_up"
               *ngIf="
                 getChildrenFn(item) &&
                 getChildrenFn(item).length > 0 &&
                 item.isOpen
               "
               (click)="closeItem(item)"
-              class="ngm-tree-grid-main-icon"
-            />
-
-            <img
-              src="../../../../assets/download.png"
-              alt=">"
+            ></div>
+            <div
               *ngIf="
                 getChildrenFn(item) &&
                 getChildrenFn(item).length > 0 &&
                 !item.isOpen
               "
               (click)="openItem(item)"
-              class="ngm-tree-grid-main-icon"
-            />
-
-            <img
-              src="../../../../assets/dash.png"
-              alt="-"
+              class="ngm-tree-grid-main-icon arrow_right"
+            ></div>
+            <div
               *ngIf="!getChildrenFn(item) || getChildrenFn(item).length == 0"
-              class="ngm-tree-grid-main-icon"
-            />
+              class="ngm-tree-grid-main-icon dash"
+            ></div>
             <ng-template ngmCellHost></ng-template>
             <!-- </span> -->
           </div>
