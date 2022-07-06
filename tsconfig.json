@@ -17,6 +17,10 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "paths": {
+      "ngm-live-search": [
+        "dist/ngm-live-search/ngm-live-search",
+        "dist/ngm-live-search"
+      ],
       "ngm-tree-grid": [
         "dist/ngm-tree-grid/ngm-tree-grid",
         "dist/ngm-tree-grid"

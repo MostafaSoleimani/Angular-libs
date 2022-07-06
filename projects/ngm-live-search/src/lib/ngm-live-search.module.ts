@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
-import { NgxLiveSearchComponent } from './ngx-live-search.component';
+import { NgmLiveSearchComponent } from './ngm-live-search.component';
 
 
 
 @NgModule({
   declarations: [
-    NgxLiveSearchComponent
+    NgmLiveSearchComponent
   ],
   imports: [
   ],
   exports: [
-    NgxLiveSearchComponent
+    NgmLiveSearchComponent
   ]
 })
 export class NgmLiveSearchModule { }

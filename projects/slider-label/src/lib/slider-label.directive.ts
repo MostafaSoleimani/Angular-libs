@@ -8,8 +8,8 @@ import { Directive, ElementRef, HostListener, AfterViewInit, Inject, Renderer2, 
 export class SliderLabelDirective implements AfterViewInit {
   /** direction 'rtl' | 'ltr' */
   @Input() dir: 'rtl' | 'ltr' = 'ltr';
-  /** Animation Duration. Pixel per millisecond */
-  @Input() dur: number = 0.06;
+  /** Pixel per second */
+  @Input() speed: number = 60;
   /** Animation Duration for back to normal in ms */
   @Input() comeBackTime: number = 40;
   @Input() className: string = 'ngxSliderLabel';
@@ -18,7 +18,6 @@ export class SliderLabelDirective implements AfterViewInit {
   get margin() {
     return this.dir === 'rtl' ? 'marginRight' : 'marginLeft'
   }
-
 
   span: any;
 
@@ -70,13 +69,11 @@ export class SliderLabelDirective implements AfterViewInit {
     // first define a reusable animation
     const myAnimation = this._builder.build([
       style({ [this.margin]: 0 }),
-      animate( diff / this.dur, style({ [this.margin]: -diff + 'px' }))
+      animate(1000 * diff / this.speed, style({ [this.margin]: -diff + 'px' }))
     ]);
 
     // use the returned factory object to create a player
     const player = myAnimation.create(element);
-
-    console.log('animate in ', diff / this.dur, (diff ) + 'px')
 
     player.play();
   }
@@ -84,7 +81,6 @@ export class SliderLabelDirective implements AfterViewInit {
   removeAnimation(element: any) {
     // first define a reusable animation
     const myAnimation = this._builder.build([
-      // style({ this.margin: -(this.childBound.width - this.parentBound.width + 10) + 'px' }),
       animate(this.comeBackTime, style({ [this.margin]: '0px' }))
     ]);
 

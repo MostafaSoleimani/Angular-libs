@@ -6,6 +6,9 @@ A tree grid that supports editable fields like Inputs and Checkboxes.
 
 You can find [Demo](https://stackblitz.com/edit/angular-ivy-z3d4sk?file=src%2Fapp%2Fapp.component.ts) here.
 
+It shows your kindness if you give star on my github. I will appreciate that.
+You can find [Repo](https://github.com/MostafaSoleimani/Angular-libs/blob/main/projects/ngm-tree-grid) here.
+
 ## Installation
 
 Install ngm-tree-grid with npm
@@ -13,6 +16,7 @@ Install ngm-tree-grid with npm
 ```bash
   cd my-project
   npm i ngm-tree-grid
+  npm i ngm-live-search
 ```
 
 ## Usage/Examples
@@ -56,15 +60,16 @@ export class YourComponent {
   treeGridConfig: INgmTreeGridConfig = {
     columns: [
       {
-        header: 'Title: ',
+        header: "Title: ",
         width: 50,
       },
       {
-        header: 'Id: ',
+        header: "Id: ",
         width: 50,
       },
     ],
-    searchFn: (item, text: string) =>  item.name.toLocaleLowerCase().includes(text.toLocaleLowerCase()),
+    searchFn: (item, text: string) =>
+      item.name.toLocaleLowerCase().includes(text.toLocaleLowerCase()),
   };
 
   data = [
@@ -99,9 +104,9 @@ export class YourComponent {
 
 #### Inputs and Outputs
 
-| Parameter      | Type                 | Description                                       |
-| :------------- | :------------------- | :------------------------------------------------ |
-| `[config]`     | `INgmTreeGridConfig` | configuration of tree-grid header and search      |
-| `[dataSource]` | `INgmDataSource`     | data and a func to get children                   |
-| `(expand)`     | `Output`             | emits when user expand a node returns the item    |
-| `(collapse)`   | `Output`             | emits when user collapse a node returns the item  |
+| Parameter      | Type                 | Description                                      |
+| :------------- | :------------------- | :----------------------------------------------- |
+| `[config]`     | `INgmTreeGridConfig` | configuration of tree-grid header and search     |
+| `[dataSource]` | `INgmDataSource`     | data and a func to get children                  |
+| `(expand)`     | `Output`             | emits when user expand a node returns the item   |
+| `(collapse)`   | `Output`             | emits when user collapse a node returns the item |

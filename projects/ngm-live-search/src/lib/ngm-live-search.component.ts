@@ -93,7 +93,7 @@ export interface ISearchParams {
     `,
   ],
 })
-export class NgxLiveSearchComponent implements AfterViewInit, OnDestroy {
+export class NgmLiveSearchComponent implements AfterViewInit, OnDestroy {
   @Input() config: ISearchParams = {
     debounceTime: 700,
     minLength: 0,
@@ -106,7 +106,7 @@ export class NgxLiveSearchComponent implements AfterViewInit, OnDestroy {
   filter = new FormControl('');
   unsubscribes: Subscription[] = [];
 
-  constructor() {}
+  constructor() { }
 
   ngOnDestroy() {
     this.unsubscribes.forEach((x) => x.unsubscribe());

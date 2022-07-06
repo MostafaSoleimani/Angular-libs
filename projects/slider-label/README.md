@@ -39,9 +39,9 @@ Then in your component.html
 
 #### Inputs
 
-| Parameter      | Type    | Description           |
-| :------------- | :------ | :-------------------- |
-| `dir`          | `Input` | rtl or ltr            |
-| `dur`          | `Input` | The time of animation |
-| `comeBackTime` | `Input` | return to normal time |
-| `className`    | `Input` | css class name        |
+| Parameter      | Type    | Description                                      |
+| :------------- | :------ | :----------------------------------------------- |
+| `dir`          | `Input` | rtl or ltr                                       |
+| `speed`        | `Input` | The sliding speed; the unit is pixel per soconds |
+| `comeBackTime` | `Input` | return to normal time                            |
+| `className`    | `Input` | css class name                                   |

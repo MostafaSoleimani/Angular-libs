@@ -1,6 +1,6 @@
 {
   "name": "ngm-live-search",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "peerDependencies": {
     "@angular/common": "^13.2.0",
     "@angular/core": "^13.2.0"

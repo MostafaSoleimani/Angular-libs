@@ -1,5 +1,6 @@
 export interface INgmTreeGridConfig {
   hasSearch?: boolean;
+  searchPlaceHolder?: string;
   searchFn?: (obj: any, text: string) => boolean;
   columns: INgmColumn[]
 }
