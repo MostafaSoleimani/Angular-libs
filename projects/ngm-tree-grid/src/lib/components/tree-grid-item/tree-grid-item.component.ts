@@ -8,6 +8,7 @@ import { INgmExpansion, INgmTreeGridConfig } from '../../model';
   styleUrls: ['./tree-grid-item.component.scss']
 })
 export class TreeGridItemComponent implements AfterContentInit {
+  /** The level of node */
   @Input() level = 1;
   @Input() data: any[] = [];
   @Input()

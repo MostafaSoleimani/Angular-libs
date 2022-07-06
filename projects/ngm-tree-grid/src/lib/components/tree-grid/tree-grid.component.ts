@@ -1,7 +1,7 @@
-import { INgmTreeGridConfig } from './../../model/tree-grid-config';
-import { Component, Input, OnInit, Output, EventEmitter, ContentChild, ContentChildren, QueryList, TemplateRef } from '@angular/core';
-import { INgmDataSource } from './../../model/datasource-model';
+import { Component, ContentChildren, EventEmitter, Input, Output, QueryList, TemplateRef } from '@angular/core';
 import { INgmExpansion } from '../../model';
+import { INgmDataSource } from './../../model/datasource-model';
+import { INgmTreeGridConfig } from './../../model/tree-grid-config';
 
 @Component({
   selector: 'ngm-tree-grid',
@@ -9,9 +9,11 @@ import { INgmExpansion } from '../../model';
   styleUrls: ['./tree-grid.component.scss']
 })
 export class TreeGridComponent<T> {
+  /** When user clicks on arrow to expand a row, this emitter emits an event */
   @Output()
   expand = new EventEmitter<INgmExpansion>();
 
+  /** When user clicks on arrow to collapse a row, this emitter emits an event */
   @Output()
   collapse = new EventEmitter<INgmExpansion>();
 
@@ -22,6 +24,7 @@ export class TreeGridComponent<T> {
   config: INgmTreeGridConfig = {
     hasSearch: true,
     columns: [],
+    searchPlaceHolder: 'Search',
     searchFn: (obj: any, txt: string) => {
       return Object.values(obj)
         .filter((x: any) => (typeof x === 'string' || typeof x === 'number'))
@@ -71,7 +74,12 @@ export class TreeGridComponent<T> {
   ///////////////////////////////////////////////////////////////////////////
   /////////////////////********************************/////////////////////
   ///////////**********     Start Filtering       **********///////////
-
+  /**
+   * There are two important things to consider in a tree search..
+   * If a node contains that search, It should be in final result.
+   * If a node doesn't contain the searched text, but its children do, It should also be in final result.
+   * Otherwise it should be filtered out of the result.
+   */
   filterTree() {
     if (this.dataSource.data && this.filterText) {
       this.filteredData = [...this.dataSource.data]
@@ -96,9 +104,6 @@ export class TreeGridComponent<T> {
   }
 
   hasIncludedSearchTextInChildren(node: any, searchText: string): boolean {
-    // console.log(node, searchText);
-    // if (node.name.toLowerCase().includes(searchText.toLowerCase())) {
-    // }
     if (this.config.searchFn!(node, searchText)) {
       return true;
     }
