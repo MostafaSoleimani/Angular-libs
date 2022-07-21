@@ -1,4 +1,5 @@
-import { Component, ContentChildren, EventEmitter, Input, Output, QueryList, TemplateRef } from '@angular/core';
+import { Component, ContentChildren, EventEmitter, Input, Output, QueryList, TemplateRef, ViewChildren } from '@angular/core';
+import { CellHostDirective } from '../../directive';
 import { INgmExpansion } from '../../model';
 import { INgmDataSource } from './../../model/datasource-model';
 import { INgmTreeGridConfig } from './../../model/tree-grid-config';
@@ -34,6 +35,8 @@ export class TreeGridComponent<T> {
   }
 
   @ContentChildren('treeGridCell') cellContents!: QueryList<TemplateRef<any>>;
+  @ContentChildren('treeGridHeader') headerContents?: QueryList<TemplateRef<any>>;
+  @ViewChildren(CellHostDirective) headerPanes!: QueryList<CellHostDirective>;
 
   filterText = '';
   filteredData: T[] = [];
@@ -41,6 +44,17 @@ export class TreeGridComponent<T> {
   showGrid = true;
 
   constructor() { }
+
+  ngAfterContentInit(): void {
+    setTimeout(() => {
+      if(this.headerContents) {
+        this.headerPanes.forEach((x, i) => {
+          x.viewContainerRef.clear();
+          x.viewContainerRef.createEmbeddedView(this.headerContents!.get(i % this.headerContents!.length)!)
+        });
+      }
+    }, 10);
+  }
 
   onExpand(e: INgmExpansion) {
     this.expand.emit(e)
@@ -58,7 +72,6 @@ export class TreeGridComponent<T> {
   }
 
   onSearch(text: string) {
-    console.log('searched', text)
     if (typeof text === 'string' && text != '') {
       this.filterText = text
     } else {

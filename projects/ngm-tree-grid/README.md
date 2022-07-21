@@ -40,6 +40,12 @@ Then in your component.html
     (expand)="onExpand($event)"
     (collapse)="onCollapse($event)"
   >
+    <ng-template #treeGridHeader>
+      first header
+    </ng-template>
+    <ng-template #treeGridHeader>
+      second
+    </ng-template>
     <ng-template #treeGridCell let-item>
       <div>{{ item.title.caption }}</div>
     </ng-template>

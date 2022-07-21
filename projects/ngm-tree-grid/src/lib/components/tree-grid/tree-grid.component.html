@@ -10,7 +10,18 @@
   </header>
   <main>
     <div class="tree-grid-titles">
-      <div
+      <ng-container *ngIf="headerContents">
+        <div *ngFor="let head of headerContents; index as i"
+        [ngStyle]="{
+          width: config.columns[i].width
+            ? config.columns[i].width + '%'
+            : 100 / config.columns.length + '%'
+        }">
+          <ng-template ngmCellHost></ng-template>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="!headerContents">
+        <div
         *ngFor="let head of config.columns; let first = first"
         [ngStyle]="{
           width: head.width
@@ -20,6 +31,7 @@
       >
         {{ head.header }}
       </div>
+      </ng-container>
     </div>
     <ngm-tree-grid-item
       *ngIf="showGrid"
